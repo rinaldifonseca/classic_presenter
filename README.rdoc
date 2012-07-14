@@ -21,11 +21,11 @@ gem install classic_presenter
 
     class ProductPresenter < ClassicPresenter::Base
       def display_name
-          if user
-            context.content_tag :strong, name
+          if context.user_logged_in?
+            name
           else
-          context.link_to name, context.product_path
-        end
+            context.link_to name, context.product_path
+          end
       end
 
       def display_description
@@ -35,16 +35,14 @@ gem install classic_presenter
 
 * In your view, show.html.erb for example, you can present your Product object using this syntax:
 
-    <% present ProductPresenter, @product, :user => current_user do |presenter| %>
+    <% present ProductPresenter, @product do |presenter| %>
     <%= presenter.display_name %>
     <%= presenter.display_description %>
     <% end %>
 
 == Additional details
 
-* We can pass many objects to the presenter. In this example we are using :user => current_user and current_user is a helper that returns a User that is logged in. But we can use this for example:
-
-    <% present ProductPresenter, @product, :foo => "bar", :bar => "foo" do |presenter| %>
+* Inside of the presenter we have an access to the context. In the example above the context is the View(ActionView), then we can access any method like link_to, number_to_currency etc
 
 * Since ClassicPresenter::Base is a Decorator, it implements the “transparent interface” requirements of the Gang of Four’s definition. This means that when we call some method in ProductPresenter, it will be delegated to the decorated object (in this case Product), like this:
 
