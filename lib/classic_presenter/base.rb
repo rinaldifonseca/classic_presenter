@@ -12,6 +12,10 @@ module ClassicPresenter
       @context = context
       super model
     end
+
+    def self.map(collection, context = nil)
+      collection.map {|item| self.new(item, context)}
+    end
   end
 end
 
