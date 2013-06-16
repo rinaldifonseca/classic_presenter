@@ -47,8 +47,7 @@ gem install classic_presenter
     #products_controller.rb
     @products = ProductPresenter.map(Post.all, view_context)
 
-* Inside of the presenter we have an access to the context. In the example above the context is the View(ActionView), then we can access any method like
-link_to, number_to_currency etc directly.
+* Inside of the presenter we have an access to the context. In the example above the context is the View(ActionView), then we can access any method like link_to, number_to_currency etc directly.
 
 * You can also instantiate your presenter in the controller using the view_context and then to access any helper method like number_to_currency: 
 
