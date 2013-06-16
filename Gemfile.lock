@@ -1,12 +1,18 @@
 PATH
   remote: .
   specs:
-    classic_presenter (0.0.1)
+    classic_presenter (1.0.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
+    coderay (1.0.9)
     diff-lcs (1.1.3)
+    method_source (0.8.1)
+    pry (0.9.12.1)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rspec (2.10.0)
       rspec-core (~> 2.10.0)
       rspec-expectations (~> 2.10.0)
@@ -15,10 +21,12 @@ GEM
     rspec-expectations (2.10.0)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.10.1)
+    slop (3.4.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   classic_presenter!
+  pry
   rspec
