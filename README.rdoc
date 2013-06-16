@@ -40,9 +40,26 @@ gem install classic_presenter
     <%= presenter.display_description %>
     <% end %>
 
-== Additional details
+== Cool Features
 
-* Inside of the presenter we have an access to the context. In the example above the context is the View(ActionView), then we can access any method like link_to, number_to_currency etc
+* You can decorates a collection of objects with your presenter:
+
+    #products_controller.rb
+    @products = ProductPresenter.map(Post.all, view_context)
+
+* Inside of the presenter we have an access to the context. In the example above the context is the View(ActionView), then we can access any method like
+link_to, number_to_currency etc directly.
+
+* You can also instantiate your presenter in the controller using the view_context and then to access any helper method like number_to_currency: 
+
+    #products_controller.rb
+    @product = ProductPresenter.new(Product.find(params[:id]), view_context)
+
+    class ProductPresenter < ClassicPresenter::Base
+      def price
+        context.number_to_currency(price, :precision => 3)
+      end
+    end
 
 * Since ClassicPresenter::Base is a Decorator, it implements the “transparent interface” requirements of the Gang of Four’s definition. This means that when we call some method in ProductPresenter, it will be delegated to the decorated object (in this case Product), like this:
 
