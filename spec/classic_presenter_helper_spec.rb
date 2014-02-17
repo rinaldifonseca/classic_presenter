@@ -5,7 +5,7 @@ describe ClassicPresenter::Helper do
 
   it "yields with a new PresenterClass instance and return it" do
     presenter_class_as_param = [:value]
-    presenter_class = mock
+    presenter_class = double
     presenter_class.should_receive(:new).with(:model, described_class, :objects).and_return presenter_class_as_param
     subject.present(presenter_class, :model, :objects) do |presenter|
       presenter.pop
