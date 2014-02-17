@@ -13,6 +13,10 @@ module ClassicPresenter
       super model
     end
 
+    def target
+      self.__getobj__
+    end
+
     def self.map(collection, context = nil)
       collection.map {|item| self.new(item, context)}
     end

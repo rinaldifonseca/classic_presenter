@@ -4,4 +4,5 @@ require "delegate"
 require "classic_presenter/base"
 require "classic_presenter/helper"
 require "rspec"
+require "ostruct"
 
